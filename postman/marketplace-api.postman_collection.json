@@ -1,0 +1,157 @@
+{
+  "info": {
+    "name": "Marketplace Backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "tenantId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create tenant",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/tenants",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Demo Marketplace\",\n  \"slug\": \"demo-marketplace\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "Create vendor",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Tenant-Id",
+            "value": "{{tenantId}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/vendors",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"ABC Traders\",\n  \"email\": \"vendor@example.com\",\n  \"phone\": \"9876543210\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List vendors",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Tenant-Id",
+            "value": "{{tenantId}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/vendors"
+      }
+    },
+    {
+      "name": "Create product",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Tenant-Id",
+            "value": "{{tenantId}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/products",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"vendorId\": 1,\n  \"name\": \"Wireless Mouse\",\n  \"description\": \"Ergonomic mouse\",\n  \"price\": 799.0,\n  \"stock\": 25\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List products",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Tenant-Id",
+            "value": "{{tenantId}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/products"
+      }
+    },
+    {
+      "name": "Create order",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "X-Tenant-Id",
+            "value": "{{tenantId}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customerName\": \"Demo Customer\",\n  \"customerEmail\": \"customer@example.com\",\n  \"totalAmount\": 799.0\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "List orders",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Tenant-Id",
+            "value": "{{tenantId}}"
+          }
+        ],
+        "url": "{{baseUrl}}/api/orders"
+      }
+    }
+  ]
+}

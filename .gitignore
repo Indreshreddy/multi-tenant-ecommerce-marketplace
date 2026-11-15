@@ -1,0 +1,23 @@
+
+# Maven
+target/
+
+# H2 Database
+data/
+*.mv.db
+*.trace.db
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+.settings/
+.metadata/
+
+# Environment files
+.env
+
+# Operating system files
+.DS_Store
+Thumbs.db
+*.class
